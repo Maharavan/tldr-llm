@@ -4,6 +4,17 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
 }
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-img{
+    width: 75px;
+    height: 75px;
+    filter: invert(1);
+}
 h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
