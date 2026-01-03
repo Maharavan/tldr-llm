@@ -1,6 +1,6 @@
 body{
     font-family: 'Arial',sans-serif;
-    background-image: url('/static/image/background.jpeg');
+    background-image: url('/static/image/background.png');
     background-repeat: no-repeat;
     background-size:cover;
 }
@@ -9,6 +9,10 @@ h1 {
     color: white;
     text-align: center;
     animation: typewriter 2s ease-in-out;
+}
+
+link.icon{
+    
 }
 
 @keyframes typewriter {
