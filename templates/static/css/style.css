@@ -1,9 +1,9 @@
 body{
     font-family: 'Arial',sans-serif;
-    background-image: url('/static/image/background.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
+    background: #000 url('/static/image/background.png') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
 }
 .container{
     display: flex;
