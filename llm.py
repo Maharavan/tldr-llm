@@ -9,7 +9,6 @@ load_dotenv()
 def summarize_text(text: str) -> str:
     """Summarizes the given text using a Groq LLM model."""
     groq = Groq(api_key=os.getenv("GROQ_API_KEY"))
-    print("API Key Loaded:", os.getenv("GROQ_API_KEY"))
     completion = groq.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[{
