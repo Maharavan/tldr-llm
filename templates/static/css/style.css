@@ -47,3 +47,24 @@ input[type=submit]{
 input[type=submit]:hover{
     background-color: #000000;
 }
+
+.options {
+    color: white;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.options select{
+    padding: 5px;
+    border-radius: 5px;
+    font-size: large;
+    cursor: pointer;
+    border: none;
+    background-color: #000000;
+    color: whitesmoke;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

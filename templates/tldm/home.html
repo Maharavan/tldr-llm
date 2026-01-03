@@ -1,18 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AI summarizer</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block content %}
     <p align="center">
-        <h1>AI summarizer</h1>
+        <h1>AI summarizer</h1><br><br>
         <form action="/" method="POST">
             <textarea name="text" rows="25" cols="50" placeholder="Enter text to summarize..."></textarea><br><br>
-            <input type="submit" value="Summarize"><br>
+            <div class ="options">
+                <label for="length">Summary Length:</label>
+                <select name="length" id="length">
+                    <option value="short">Short</option>
+                    <option value="medium">Medium</option>
+                    <option value="long">Long</option>
+                </select>
+
+                <label for ="style">Summary Style:</label>
+                <select name="style" id="style">
+                    <option value="formal">Formal</option>
+                    <option value="informal">Informal</option>
+                    <option value="technical">Technical</option>
+                </select>
+
+                <label for ="language">Summary Language:</label>
+                <select name="language" id="language">  
+                    <option value="english">English</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="french">French</option>
+                </select>
+
+                <label for ="structure">Summary structure:</label>
+                <select name="structure" id="structure">  
+                    <option value="bullet_points">Bullet Points</option>
+                    <option value="paragraph">Paragraph</option>
+                    <option value="numbered_list">Numbered List</option>
+                </select>
+            </div>
+            <br><br><br><br><br><br><br>
+            <input type="submit" value="Summarize">
         </form>
     </p>
-</body>
-</html>
+{% endblock %}

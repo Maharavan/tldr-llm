@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AI summarizer</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block content %}
     <p align="center">
-        <h1>AI summarizer</h1>
+        <h1>AI summarizer</h1><br><br>
         <textarea name="text" rows="25" cols="50">{{ result }}</textarea><br><br>
     </p>
-</body>
-</html>
+{% endblock %}

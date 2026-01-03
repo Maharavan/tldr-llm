@@ -9,7 +9,11 @@ def index():
         return render_template('home.html')
     elif request.method == 'POST':
         text = request.form.get('text')
-        result = summarize_text(text)
+        length = request.form.get('length')
+        style = request.form.get('style')
+        language = request.form.get('language')
+        structure = request.form.get('structure')
+        result = summarize_text(text,length,style,language,structure)
         return render_template('summarize_result.html', result=result)
 
 

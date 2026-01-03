@@ -11,5 +11,13 @@ You are an expert summarizer. Your task is to read the provided content and crea
 Here is the content to summarize:
 {content}
 
-Provide the summary below:
+Length of the summary is {length}
+
+Language of the summary is {language}
+
+Style of the summary is {style}
+
+Structure of the sumary is {structure}
+
+Provide the summary below and start from the summary:
 """
