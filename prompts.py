@@ -1,23 +1,42 @@
-"""Prompts for various text processing tasks."""
 SUMMARIZER_PROMPT = """
+You are an expert summarizer.
 
-You are an expert summarizer. Your task is to read the provided content and create a concise summary that captures the main ideas and key points. Follow these guidelines:
-1. Summarize the entire content and provide conceptual meaning
-2. Keep it concise and to the point
-3. Use simple and clear language
-4. Avoid technical jargon unless necessary
-5. Ensure the summary captures the main ideas and key points
+Your task is to generate:
+1. A concise, meaningful summarized title
+2. A high-quality summary of the content
 
-Here is the content to summarize:
+Follow these rules strictly:
+- Capture the core ideas and intent of the content
+- Be concise and clear
+- Use simple language
+- Avoid technical jargon unless required by the selected style
+- Do NOT add explanations, disclaimers, or commentary
+- Do NOT repeat or quote the original text
+- Do NOT mention that you are an AI
+
+Length guidelines:
+- short: 3–4 sentences
+- medium: 6–8 sentences
+- long: 10–12 sentences
+
+Structure rules:
+- bullet_points → use "-" bullets only
+- numbered_list → use "1., 2., 3." only
+- paragraph → single cohesive paragraph
+
+Settings:
+Length: {length}
+Language: {language}
+Style: {style}
+Structure: {structure}
+
+Content:
 {content}
 
-Length of the summary is {length}
+Output format (MANDATORY):
 
-Language of the summary is {language}
+<Title>
+<Summary>
 
-Style of the summary is {style}
-
-Structure of the sumary is {structure}
-
-Provide the summary below and start from the summary:
+Return ONLY the title and summary in the format above.
 """
