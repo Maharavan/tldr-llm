@@ -36,9 +36,6 @@ jobs:
                 image-url:  ${{secrets.DOCKER_USERNAME}}/tldr-llm:latest
                 render-api-key: ${{ secrets.RENDER_API_KEY }}
                 wait-for-deployment: true
-            - name: Output Render URL
-              run : |
-                    echo "Render URL is ${{steps.render_deploy.outputs.service-url}}"
 
 
                      

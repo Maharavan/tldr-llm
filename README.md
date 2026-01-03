@@ -118,7 +118,9 @@ http://localhost:5000
 ---
 ## UI Design
 
-![UI-Design](assets\screenshots\UI.png)
+<p align="center">
+<img src="screenshots/UI.png" width=100% />
+</p>
 
 ---
 ## 🎯 Purpose
