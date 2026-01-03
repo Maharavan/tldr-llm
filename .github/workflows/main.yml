@@ -5,7 +5,7 @@ on:
             - main
 
 jobs:
-    Docker-setup:
+    Build-Docker-Image-Registry:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -23,5 +23,19 @@ jobs:
             - name: Push the image
               run: |
                     docker push ${{secrets.DOCKER_USERNAME}}/tldr-llm:latest
+    Deploy-Render:
+        if : ${{ github.ref_name == 'master' }}
+        needs: Build-Docker-Image-Registry
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy to render
+              uses: gh-actions-workflows/deploy-docker-render@v1.1
+              with:
+                deploy-hook:  ${{ secrets.RENDER_DEPLOY_HOOK }}
+                image-url:  ${{secrets.DOCKER_USERNAME}}/tldr-llm:latest
+                render-api-key: ${{ secrets.RENDER_API_KEY }}
+                wait-for-deployment: true
+
+
                      
 
