@@ -1,64 +1,130 @@
-# TLDR LLM (AI Summarizer)
+# tldr-llm
 
-Simple Flask web app that sends user text to a Groq Llama 3.3 model and returns a concise TL;DR with configurable length, style, language, and structure.
+**tldr-llm** is an lightweight LLM-powered web application that generates customizable **TL;DR summaries** from long-form text.  
+It allows users to control summary **length**, **style**, **language**, and **structure** through a clean single-page interface.
 
-## Features
-- Groq-powered summarization using `llama-3.3-70b-versatile`
-- UI controls for length (short/medium/long), style (formal/informal/technical), language (English/Spanish/French), and structure (bullet points/paragraph/numbered list)
-- Single-route Flask app with Jinja templates and minimal styling
-- Ships with a reusable prompt tuned for concise titles and summaries
+---
 
-## Tech Stack
-- Python 3
+## 🌐 Live Demo
+
+👉 https://summarizer-web-app.onrender.com/
+
+---
+
+## 📦 Repository
+
+👉 https://github.com/Maharavan/tldr-llm
+
+---
+
+## ✨ Features
+
+- Generate concise **TL;DR summaries** from long text
+- Customize **summary length**:
+  - Short
+  - Medium
+  - Long
+- Choose **summary style**:
+  - Formal
+  - Informal
+  - Technical
+- Select **output language**:
+  - English
+  - Spanish
+  - French
+- Control **summary structure**:
+  - Bullet points
+  - Paragraph
+  - Numbered list
+- Single-page UI with a **single-route Flask backend**
+- Prompt-driven LLM summarization
+
+---
+
+## 🧠 How It Works
+
+1. User inputs long-form text.
+2. User selects summary preferences:
+   - Length
+   - Style
+   - Language
+   - Structure
+3. Backend dynamically builds a prompt based on these options.
+4. The prompt is sent to the LLM.
+5. The generated summary is rendered on the same page.
+
+---
+
+## 🧱 Tech Stack
+
+- Python
 - Flask
-- Groq Python SDK
-- Jinja2 templates + CSS
+- LLM API
+- HTML + minimal CSS
+- Docker
+- GitHub Actions
+- Render (deployment)
 
-## Project Layout
+---
+
+## 🗂️ Project Structure
+
 ```
-app.py                   # Flask entrypoint and routes
-llm.py                   # Groq client and summarize_text helper
-prompts.py               # Summarization prompt template
-templates/
-  tldm/
-    base.html
-    home.html
-    summarize_result.html
-  static/
-    css/style.css
-    image/icon.svg
-    image/background.png
-requirements.txt
-.env                     # define GROQ_API_KEY here (not committed)
+tldr-llm/
+├── app.py
+├── llm.py
+├── prompts.py
+├── templates/
+│   └── index.html
+├── static/
+│   └── style.css
+├── requirements.txt
+├── Dockerfile
+├── .env
+└── README.md
 ```
 
-## Prerequisites
-- Python 3.10+ recommended
-- Groq API key (https://console.groq.com/)
+---
 
-## Setup
+## 🚀 Run Locally
+
+### 1. Clone the repository
 ```bash
-python -m venv .venv
-. .venv/Scripts/activate            # Windows PowerShell: .\\.venv\\Scripts\\Activate.ps1
+git clone https://github.com/Maharavan/tldr-llm.git
+cd tldr-llm
+```
+
+### 2. Install dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-Create a `.env` file in the project root:
-```
-GROQ_API_KEY=your_groq_api_key_here
+### 3. Set environment variables
+Create a `.env` file:
+```env
+GROQ_API_KEY=your_api_key_here
 ```
 
-## Run
+### 4. Start the application
 ```bash
 python app.py
 ```
-Then open http://localhost:5000.
 
-## Usage
-1) Paste or type text into the textarea.  
-2) Choose length, style, language, and structure from the dropdowns.  
-3) Submit to get a titled summary; the result appears on a new page (editable textarea for quick copy/adjust).
+Open your browser and visit:
+```
+http://localhost:5000
+```
 
-## Notes
-- The prompt enforces concise output (title + summary only) and respects the selected options.
-- Set `temperature` inside `llm.py` (default 0.5) to adjust creativity if desired.
+---
+## UI Design
+
+![UI-Design](assets\screenshots\UI.png)
+
+---
+## 🎯 Purpose
+
+This project demonstrates:
+- Practical LLM integration in a web application
+- Prompt engineering using structured user inputs
+- Clean and minimal Flask architecture
+- Containerized deployment with CI/CD

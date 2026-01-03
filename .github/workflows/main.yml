@@ -29,12 +29,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Deploy to render
+              id: render_deploy
               uses: gh-actions-workflows/deploy-docker-render@v1.1
               with:
                 deploy-hook:  ${{ secrets.RENDER_DEPLOY_HOOK }}
                 image-url:  ${{secrets.DOCKER_USERNAME}}/tldr-llm:latest
                 render-api-key: ${{ secrets.RENDER_API_KEY }}
                 wait-for-deployment: true
+            - name: Output Render URL
+              run : |
+                    echo "Render URL is ${{steps.render_deploy.outputs.service-url}}"
 
 
                      
