@@ -57,6 +57,10 @@ input[type=submit]:hover{
     gap: 15px;
 }
 
+.options label{
+    font-weight: bold;
+}
+
 .options select{
     padding: 5px;
     border-radius: 5px;
