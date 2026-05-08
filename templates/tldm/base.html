@@ -2,12 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI summarizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered TL;DR summarizer - Generate concise summaries from long-form text">
+    <title>AI Summarizer - TL;DR Generator</title>
     <link rel="icon" href="/static/image/icon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 
 <body>
-    {%block content %}{% endblock %}
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="navbar-logo">✨ TL;DR Summarizer</a>
+            <div class="navbar-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="https://github.com/Maharavan/tldr-llm.git" target="_blank" class="nav-link">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div>Made with <span style="color:#ff6b6b;">♥</span> Maharavan &middot; <a href="https://github.com/Maharavan/tldr-llm.git" target="_blank">GitHub</a></div>
+        <div style="font-size:0.95em; color:#a1a1a1;">&copy; 2026 TL;DR Summarizer</div>
+    </footer>
 </body>
 </html>

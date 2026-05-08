@@ -1,92 +1,79 @@
 # tldr-llm
 
-**tldr-llm** is an lightweight LLM-powered web application that generates customizable **TL;DR summaries** from long-form text.  
-It allows users to control summary **length**, **style**, **language**, and **structure** through a clean single-page interface.
+**tldr-llm** is a lightweight LLM-powered web application that generates customizable **TL;DR summaries** from long-form text.  
+Users control summary **length**, **style**, **language**, and **structure** through a modern glassmorphism UI.
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
 👉 https://summarizer-web-app.onrender.com/
 
----
-
-## 📦 Repository
+## Repository
 
 👉 https://github.com/Maharavan/tldr-llm
 
 ---
 
-## ✨ Features
+## Features
 
-- Generate concise **TL;DR summaries** from long text
-- Customize **summary length**:
-  - Short
-  - Medium
-  - Long
-- Choose **summary style**:
-  - Formal
-  - Informal
-  - Technical
-- Select **output language**:
-  - English
-  - Spanish
-  - French
-- Control **summary structure**:
-  - Bullet points
-  - Paragraph
-  - Numbered list
-- Single-page UI with a **single-route Flask backend**
-- Prompt-driven LLM summarization
+- Generate concise **TL;DR summaries** from long text (up to 10,000 characters)
+- Customize **summary length** — Short · Medium · Long
+- Choose **summary style** — Formal · Informal · Technical
+- Select **output language** — English · Spanish · French
+- Control **summary structure** — Bullet Points · Paragraph · Numbered List
+- Copy to clipboard and download summary as `.txt`
+- Responsive, mobile-friendly UI
+- Single-route Flask backend with prompt-driven LLM calls
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
-1. User inputs long-form text.
-2. User selects summary preferences:
-   - Length
-   - Style
-   - Language
-   - Structure
-3. Backend dynamically builds a prompt based on these options.
-4. The prompt is sent to the LLM.
-5. The generated summary is rendered on the same page.
+1. User pastes long-form text into the input area.
+2. User selects preferences — length, style, language, structure.
+3. Flask backend builds a structured prompt from the inputs.
+4. Prompt is sent to **Groq** (`llama-3.3-70b-versatile`) via the Groq API.
+5. The generated summary is rendered on the result page.
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
-- Python
-- Flask
-- LLM API
-- HTML + minimal CSS
-- Docker
-- GitHub Actions
-- Render (deployment)
+| Layer       | Technology                          |
+|-------------|-------------------------------------|
+| Backend     | Python · Flask                      |
+| LLM         | Groq API (`llama-3.3-70b-versatile`)|
+| Frontend    | HTML · CSS (glassmorphism + Inter)  |
+| Container   | Docker                              |
+| CI/CD       | GitHub Actions                      |
+| Deployment  | Render                              |
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 tldr-llm/
-├── app.py
-├── llm.py
-├── prompts.py
+├── app.py                        # Flask app & routes
+├── llm.py                        # Groq API integration
+├── prompts.py                    # Prompt templates
 ├── templates/
-│   └── index.html
-├── static/
-│   └── style.css
+│   ├── tldm/
+│   │   ├── base.html             # Base layout
+│   │   ├── home.html             # Input form page
+│   │   └── summarize_result.html # Result page
+│   └── static/
+│       └── css/
+│           └── style.css         # UI styles
 ├── requirements.txt
 ├── Dockerfile
-├── .env
 └── README.md
 ```
 
 ---
 
-## 🚀 Run Locally
+## Run Locally
 
 ### 1. Clone the repository
 ```bash
@@ -100,33 +87,36 @@ pip install -r requirements.txt
 ```
 
 ### 3. Set environment variables
-Create a `.env` file:
+
+Create a `.env` file in the project root:
 ```env
-GROQ_API_KEY=your_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 ```
+
+Get a free API key at [console.groq.com](https://console.groq.com).
 
 ### 4. Start the application
 ```bash
 python app.py
 ```
 
-Open your browser and visit:
-```
-http://localhost:5000
+Visit `http://localhost:5000` in your browser.
+
+---
+
+## Docker
+
+```bash
+docker build -t tldr-llm .
+docker run -p 5000:5000 -e GROQ_API_KEY=your_key tldr-llm
 ```
 
 ---
-## UI Design
+
+## UI
 
 <p align="center">
-<img src="screenshots/UI.png" width=100% />
+  <img src="screenshots/UI.png" width="100%" alt="tldr-llm UI screenshot" />
 </p>
 
 ---
-## 🎯 Purpose
-
-This project demonstrates:
-- Practical LLM integration in a web application
-- Prompt engineering using structured user inputs
-- Clean and minimal Flask architecture
-- Containerized deployment with CI/CD

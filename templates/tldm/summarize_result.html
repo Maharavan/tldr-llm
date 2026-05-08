@@ -1,11 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <p align="center">
-        <div class="container">
-        <img src="/static/image/icon.svg" class="logo-img" />
-        <h1>AI summarizer</h1>
-        </div><br><br>
-        <textarea name="text" rows="25" cols="50">{{ result }}</textarea><br><br>
-    </p>
+    <div class="header-section">
+        <div class="logo-container">
+            <div class="logo-icon">✨</div>
+        </div>
+        <h1>AI Summarizer</h1>
+        <p class="subtitle">Your summary is ready</p>
+    </div>
+
+    <div class="main-content">
+        <div class="result-container">
+            <div class="result-card">
+                <div class="result-title">📝 Summary Result</div>
+                <textarea class="result-text" readonly id="resultText">{{ result }}</textarea>
+
+                <div class="action-buttons">
+                    <form action="/" method="GET" style="margin: 0;">
+                        <button type="submit" class="btn btn-primary">← Generate New Summary</button>
+                    </form>
+                    <button class="btn btn-secondary" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+                    <button class="btn btn-secondary" onclick="downloadSummary()">⬇️ Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const textarea = document.getElementById('resultText');
+            textarea.select();
+            document.execCommand('copy');
+            
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }
+
+        function downloadSummary() {
+            const text = document.getElementById('resultText').value;
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', 'summary.txt');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
 {% endblock %}

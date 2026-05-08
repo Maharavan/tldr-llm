@@ -1,45 +1,95 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <p align="center">
-        <div class="container">
-        <img src="/static/image/icon.svg" class="logo-img" />
-        <h1>AI summarizer</h1>
-        </div><br><br>
-        
-        <form action="/" method="POST">
-            <textarea name="text" rows="25" cols="50" placeholder="Enter text to summarize..."></textarea><br><br>
-            <div class ="options">
-                <label for="length">Summary Length :</label>
-                <select name="length" id="length">
-                    <option value="short">Short</option>
-                    <option value="medium">Medium</option>
-                    <option value="long">Long</option>
-                </select>
+    <div class="header-section">
+        <div class="logo-container">
+            <div class="logo-icon">✨</div>
+        </div>
+        <h1>AI Summarizer</h1>
+        <p class="subtitle">Transform long content into concise summaries with AI-powered precision</p>
+    </div>
 
-                <label for ="style">Summary Style :</label>
-                <select name="style" id="style">
-                    <option value="formal">Formal</option>
-                    <option value="informal">Informal</option>
-                    <option value="technical">Technical</option>
-                </select>
+    <div class="main-content">
+        <div class="form-card">
+            <form action="/" method="POST" id="summaryForm">
+                <div class="input-wrapper">
+                    <textarea 
+                        name="text" 
+                        id="inputText"
+                        placeholder="Paste your text here... Enter articles, documents, or any content you'd like to summarize"
+                        required
+                    ></textarea>
+                    <div class="char-count" id="charCount">0 / 10,000</div>
+                </div>
 
-                <label for ="language">Summary Language :</label>
-                <select name="language" id="language">  
-                    <option value="english">English</option>
-                    <option value="spanish">Spanish</option>
-                    <option value="french">French</option>
-                </select>
+                <div class="options">
+                    <div class="option-group">
+                        <label for="length">📏 Length</label>
+                        <select name="length" id="length">
+                            <option value="short">Short (1-2 min read)</option>
+                            <option value="medium" selected>Medium (3-5 min read)</option>
+                            <option value="long">Long (5+ min read)</option>
+                        </select>
+                    </div>
 
-                <label for ="structure">Summary structure :</label>
-                <select name="structure" id="structure">  
-                    <option value="bullet_points">Bullet Points</option>
-                    <option value="paragraph">Paragraph</option>
-                    <option value="numbered_list">Numbered List</option>
-                </select>
-            </div>
-            <br><br><br><br><br><br><br>
-            <input type="submit" value="Summarize">
-        </form>
-    </p>
+                    <div class="option-group">
+                        <label for="style">🎨 Style</label>
+                        <select name="style" id="style">
+                            <option value="formal">Formal</option>
+                            <option value="informal" selected>Informal</option>
+                            <option value="technical">Technical</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="language">🌍 Language</label>
+                        <select name="language" id="language">
+                            <option value="english" selected>English</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="structure">📋 Structure</label>
+                        <select name="structure" id="structure">
+                            <option value="bullet_points" selected>Bullet Points</option>
+                            <option value="paragraph">Paragraph</option>
+                            <option value="numbered_list">Numbered List</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <input type="submit" value="✨ Summarize" id="submitBtn">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Character counter
+        const inputText = document.getElementById('inputText');
+        const charCount = document.getElementById('charCount');
+        const maxChars = 10000;
+
+        inputText.addEventListener('input', function() {
+            const count = this.value.length;
+            charCount.textContent = count.toLocaleString() + ' / ' + maxChars.toLocaleString();
+            
+            // Color warning at 80%
+            if (count > maxChars * 0.8) {
+                charCount.style.color = 'rgba(255, 107, 107, 0.7)';
+            } else {
+                charCount.style.color = 'rgba(100, 200, 255, 0.7)';
+            }
+        });
+
+        // Form submission feedback
+        document.getElementById('summaryForm').addEventListener('submit', function() {
+            const btn = document.getElementById('submitBtn');
+            btn.value = '⏳ Summarizing...';
+            btn.disabled = true;
+        });
+    </script>
 {% endblock %}
